@@ -12,10 +12,15 @@ import android.view.View
 import android.widget.Button
 import androidx.core.view.GestureDetectorCompat
 import com.why.bluetoothtouchpad2.bluetooth.BluetoothController
+import com.why.bluetoothtouchpad2.bluetooth.BluetoothController.btHid
+import com.why.bluetoothtouchpad2.bluetooth.BluetoothController.hostDevice
 import com.why.bluetoothtouchpad2.bluetooth.MouseSender
 import com.why.bluetoothtouchpad2.bluetooth.Sender
+import java.nio.ByteBuffer
+import kotlin.math.roundToInt
 
-class MouseActivity : Activity(),GestureDetector.OnGestureListener,GestureDetector.OnDoubleTapListener {
+class MouseActivity : Activity(), GestureDetector.OnGestureListener,
+    GestureDetector.OnDoubleTapListener {
     var mouse: MouseSender? = null
     private lateinit var mDetector: GestureDetectorCompat
 
@@ -34,7 +39,7 @@ class MouseActivity : Activity(),GestureDetector.OnGestureListener,GestureDetect
 
     }
 
-    var m: Sender?=null
+    var m: Sender? = null
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onStart() {
@@ -81,13 +86,13 @@ class MouseActivity : Activity(),GestureDetector.OnGestureListener,GestureDetect
                 // composite.registerListener(viewTouchListener)
                 //   trackPadView.setOnTouchListener(composite)
 
-                m=Sender(rMouseSender,hid,device)
+                m = Sender(rMouseSender, hid, device)
                 println("hihihi")
             }
 
         }
 
-        BluetoothController.getDisconnector{
+        BluetoothController.getDisconnector {
             val mainHandler = Handler(this.mainLooper)
 
             mainHandler.post(object : Runnable {
@@ -98,26 +103,91 @@ class MouseActivity : Activity(),GestureDetector.OnGestureListener,GestureDetect
         }
 
     }
+
     public override fun onStop() {
         super.onStop()
         BluetoothController.btHid?.unregisterApp()
 
-        BluetoothController.hostDevice=null
-        BluetoothController.btHid=null
+        BluetoothController.hostDevice = null
+        BluetoothController.btHid = null
     }
 
 
     private var mPtrCount = 0
-    override fun onTouchEvent(event: MotionEvent?): Boolean {
-        when(event?.action){
-            MotionEvent.ACTION_MOVE->{
-                //implement moving of ptr
+    private var previousX: Float = 0f
+    private var previousY: Float = 0f
+    private var pointerMotionStopFlag: Boolean = false
+    override fun onTouchEvent(event: MotionEvent): Boolean {
+        val x: Float = event.x
+        val y: Float = event.y
+        when (event.action) {
+            MotionEvent.ACTION_MOVE -> {
+                if (event.pointerCount == 1) {
+                    if (pointerMotionStopFlag) {
+                        pointerMotionStopFlag = false
+                    }
+
+                    var dx: Float = x - previousX
+                    var dxInt: Int = dx.roundToInt()
+
+
+                    if (dxInt > 2047) {
+                        dxInt = 2047
+                    }
+
+                    if (dxInt < -2047) {
+                        dxInt = -2047
+                    }
+
+                    var dy: Float = y - previousY
+                    var dyInt: Int = dy.roundToInt()
+                    if (dyInt > 2047) dyInt = 2047
+
+
+                    if (dyInt < -2047) dyInt = -2047
+
+                    var bytesArrX = ByteArray(2) { 0 }
+                    var buffX: ByteBuffer = ByteBuffer.wrap(bytesArrX)
+                    buffX.putShort(dxInt.toShort())
+
+                    var bytesArrY = ByteArray(2) { 0 }
+                    var buffY: ByteBuffer = ByteBuffer.wrap(bytesArrY)
+                    buffY.putShort(dyInt.toShort())
+
+                    mouse?.mouseReport?.dxMsb = bytesArrX[0]
+                    mouse?.mouseReport?.dxLsb = bytesArrX[1]
+
+                    mouse?.mouseReport?.dyMsb = bytesArrY[0]
+                    mouse?.mouseReport?.dyLsb = bytesArrY[1]
+
+                    btHid?.sendReport(hostDevice, 4, mouse?.mouseReport?.bytes)
+
+
+                } else {
+
+                    mouse?.mouseReport?.dxMsb = 0
+                    mouse?.mouseReport?.dxLsb = 0
+                    mouse?.mouseReport?.dyMsb = 0
+                    mouse?.mouseReport?.dyLsb = 0
+
+                    btHid?.sendReport(hostDevice, 4, mouse?.mouseReport?.bytes)
+
+                }
             }
-            MotionEvent.ACTION_POINTER_DOWN->{
+            MotionEvent.ACTION_POINTER_DOWN -> {
                 mPtrCount++
             }
-            MotionEvent.ACTION_POINTER_UP->{
+            MotionEvent.ACTION_POINTER_UP -> {
                 mPtrCount--
+            }
+            MotionEvent.ACTION_UP->{
+                mouse?.mouseReport?.dxMsb =0
+                mouse?.mouseReport?.dxLsb = 0
+
+                mouse?.mouseReport?.dyMsb = 0
+                mouse?.mouseReport?.dyLsb = 0
+
+                btHid?.sendReport(hostDevice, 4, mouse?.mouseReport?.bytes)
             }
         }
         return if (mDetector.onTouchEvent(event)) {
@@ -131,16 +201,22 @@ class MouseActivity : Activity(),GestureDetector.OnGestureListener,GestureDetect
 
     override fun onShowPress(e: MotionEvent?) {}
 
-    override fun onSingleTapUp(e: MotionEvent?): Boolean {return true}
+    override fun onSingleTapUp(e: MotionEvent?): Boolean {
+        return true
+    }
 
-    override fun onDown(e: MotionEvent?): Boolean { return true}
+    override fun onDown(e: MotionEvent?): Boolean {
+        return true
+    }
 
     override fun onFling(
         e1: MotionEvent?,
         e2: MotionEvent?,
         velocityX: Float,
         velocityY: Float
-    ): Boolean {return true}
+    ): Boolean {
+        return true
+    }
 
     override fun onScroll(
         e1: MotionEvent?,
@@ -148,28 +224,37 @@ class MouseActivity : Activity(),GestureDetector.OnGestureListener,GestureDetect
         distanceX: Float,
         distanceY: Float
     ): Boolean {
-        if(mPtrCount==2) {
-            var dy =0
-            var dx:Int
+        if (mPtrCount == 2) {
+            var dy = 0
+            var dx: Int
             when {
-                distanceY>0 -> { dy= -1}
-                distanceY<0 -> { dy = 1}
-                distanceY==0f -> { dy=0}
+                distanceY > 0 -> {
+                    dy = -1
+                }
+                distanceY < 0 -> {
+                    dy = 1
+                }
+                distanceY == 0f -> {
+                    dy = 0
+                }
             }
 
             dx = when {
-                distanceX>2 -> {
+                distanceX > 2 -> {
                     1
                 }
-                distanceX<-2 -> {
+                distanceX < -2 -> {
                     -1
                 }
                 else -> {
                     0
                 }
             }
-            if (dx > 127){ dx = 127}
-            else if (dx < -127){ dx = -127}
+            if (dx > 127) {
+                dx = 127
+            } else if (dx < -127) {
+                dx = -127
+            }
 
             mouse?.sendScroll(dy, dx)
         }
@@ -188,9 +273,9 @@ class MouseActivity : Activity(),GestureDetector.OnGestureListener,GestureDetect
     }
 
     override fun onDoubleTapEvent(e: MotionEvent?): Boolean {
-        if (e?.action==MotionEvent.ACTION_UP){
+        if (e?.action == MotionEvent.ACTION_UP) {
             mouse?.sendLeftClickOff()
-        }else if (e?.action==MotionEvent.ACTION_MOVE){
+        } else if (e?.action == MotionEvent.ACTION_MOVE) {
             mouse?.sendLeftClickOn()
         }
         return true
