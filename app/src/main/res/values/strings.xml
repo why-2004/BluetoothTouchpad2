@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Bluetooth Touchpad2</string>
+    <string name="not_ble_hid">Proxy received but it is not a BluetoothHidDevice</string>
+
+    <string name="title_activity_mouse">MouseActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+</resources>
