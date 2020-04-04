@@ -5,4 +5,6 @@
     <string name="title_activity_mouse">MouseActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="leftArrow"><![CDATA[<------]]></string>
+    <string name="rightArrow"><![CDATA[------>]]></string>
 </resources>

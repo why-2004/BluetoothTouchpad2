@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:orientation="vertical"
+    tools:context=".NubActivity"
+    android:keepScreenOn="true"
+    android:background="#323232">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.8"
+        android:weightSum="1">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/leftArrow"
+            android:textColor="#E0E0E0"
+            android:background="#323232"
+            android:layout_gravity="left"
+            android:onClick="moveLeft"
+            tools:ignore="HardcodedText,NestedWeights,RtlHardcoded" />
+
+        <io.github.controlwear.virtual.joystick.android.JoystickView
+            android:id="@+id/joystickView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:JV_backgroundColor="#323232"
+            app:JV_borderColor="#323232"
+            app:JV_borderWidth="4dp"
+            app:JV_buttonColor="#E01010"
+            app:JV_buttonSizeRatio="40%"
+            android:layout_gravity="center_horizontal"
+            app:JV_fixedCenter="false"
+            tools:ignore="NestedWeights" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/rightArrow"
+            android:textColor="#E0E0E0"
+            android:background="#323232"
+            android:layout_gravity="right"
+            android:onClick="moveRight"
+            tools:ignore="HardcodedText,NestedWeights,RtlHardcoded" />
+    </FrameLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="0dp"
+        android:layout_weight="0.2"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0dp"
+            android:layout_marginEnd="0dp"
+            android:layout_weight="0.5"
+            android:backgroundTint="#545454"
+            tools:ignore="ButtonStyle,NestedWeights" />
+
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0dp"
+            android:layout_marginEnd="0dp"
+            android:layout_weight="0.499"
+            android:backgroundTint="#545454"
+            tools:ignore="ButtonStyle" />
+    </LinearLayout>
+
+</LinearLayout>

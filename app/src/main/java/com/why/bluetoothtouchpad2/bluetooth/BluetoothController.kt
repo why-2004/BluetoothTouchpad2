@@ -38,7 +38,7 @@ object BluetoothController: BluetoothHidDevice.Callback(), BluetoothProfile.Serv
     val btAdapter by lazy { BluetoothAdapter.getDefaultAdapter()!! }
     var btHid: BluetoothHidDevice? = null
     var hostDevice: BluetoothDevice? = null
-    var autoPairFlag = false
+    var autoPairFlag = true
 
     var mpluggedDevice :BluetoothDevice? = null
 
@@ -131,8 +131,8 @@ object BluetoothController: BluetoothHidDevice.Callback(), BluetoothProfile.Serv
         if(registered)
         {
             var pairedDevices = btHid?.getDevicesMatchingConnectionStates(intArrayOf(BluetoothProfile.STATE_CONNECTING,BluetoothProfile.STATE_CONNECTED,BluetoothProfile.STATE_DISCONNECTED,BluetoothProfile.STATE_DISCONNECTING))
-            Log.d("paired d", "paired devices are : $pairedDevices")
-            Log.d("paired d","${btHid?.getConnectionState(pairedDevices?.get(0))}")
+            //Log.d("paired d", "paired devices are : $pairedDevices")
+            //Log.d("paired d","${btHid?.getConnectionState(pairedDevices?.get(0))}")
             mpluggedDevice = pluggedDevice
             if(btHid?.getConnectionState(pluggedDevice)==0 && pluggedDevice!= null && autoPairFlag)
             {
@@ -145,20 +145,10 @@ object BluetoothController: BluetoothHidDevice.Callback(), BluetoothProfile.Serv
 
             else if(btHid?.getConnectionState(pairedDevices?.get(0))==0 && autoPairFlag)
             {
-                Log.i("ddaaqq","sssS"
-                )
                 btHid?.connect(pairedDevices?.get(0))
+                println( "Device not connected")
+
             }
-
-//            val intent = Intent("CUSTOM_ACTION")
-//            intent.putExtra("DATE", Date().toString())
-//            Log.d("j", "sending broadcast")
-//
-//            // send local broadcast
-//            LocalBroadcastManager.getInstance(this).sendBroadcast(intent)
-
-
-
 
 
         }
@@ -170,17 +160,11 @@ object BluetoothController: BluetoothHidDevice.Callback(), BluetoothProfile.Serv
 
 
 
-    /*************/
-    /** Garbage **/
-    /*************/
-
-    const val TAG = "BluetoothController"
-
     private val sdpRecord by lazy {
         BluetoothHidDeviceAppSdpSettings(
-            "Pixel HID1",
-            "Mobile BController",
-            "bla",
+            "WHY",
+            "WHY's Bluetooth controller",
+            "WHY",
             BluetoothHidDevice.SUBCLASS1_COMBO,
             DescriptorCollection.MOUSE_KEYBOARD_COMBO
         )

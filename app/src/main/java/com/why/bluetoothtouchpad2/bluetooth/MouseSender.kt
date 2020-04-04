@@ -4,8 +4,10 @@ import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothHidDevice
 import android.util.Log
 import com.why.bluetoothtouchpad2.bluetooth.MouseReport
+import java.nio.ByteBuffer
 import java.util.*
 import kotlin.concurrent.schedule
+import kotlin.math.roundToInt
 
 @Suppress("MemberVisibilityCanBePrivate")
 open class MouseSender(
@@ -24,20 +26,56 @@ open class MouseSender(
         }
     }
 
-    fun sendTestMouseMove() {
-        mouseReport.dxLsb = 20
-        mouseReport.dyLsb = 20
-        mouseReport.dxMsb = 20
-        mouseReport.dyMsb = 20
+    fun sendMouseMove(dxInt:Int,dyInt:Int) {
+
+        var bytesArrX = ByteArray(2) { 0 }
+        var buffX: ByteBuffer = ByteBuffer.wrap(bytesArrX)
+        buffX.putShort(dxInt.toShort())
+
+        var bytesArrY = ByteArray(2) { 0 }
+        var buffY: ByteBuffer = ByteBuffer.wrap(bytesArrY)
+        buffY.putShort(dyInt.toShort())
+
+
+        mouseReport.dxMsb = bytesArrX[0]
+        mouseReport.dxLsb = bytesArrX[1]
+
+        mouseReport.dyMsb = bytesArrY[0]
+        mouseReport.dyLsb = bytesArrY[1]
         sendMouse()
-        println("hello")
+        //println("Mouse Moving")
+    }
+
+    var toggleLeftMouse=true
+    fun toggleLeftMouse(){
+        println("hi i am no")
+        if(toggleLeftMouse){
+            mouseReport.leftButton=true
+            toggleLeftMouse=!toggleLeftMouse
+            sendMouse()
+        }else{
+            mouseReport.leftButton=false
+            toggleLeftMouse=!toggleLeftMouse
+            sendMouse()
+        }
+    }
+
+    var toggleRightMouse=true
+    fun toggleRightMouse(){
+        if(toggleRightMouse){
+            mouseReport.leftButton=true
+            toggleRightMouse=!toggleRightMouse
+            sendMouse()
+        }else{
+            mouseReport.leftButton=false
+            toggleRightMouse=!toggleRightMouse
+            sendMouse()
+        }
     }
 
     fun sendAutoClick() {
-        mouseReport.leftButton = true
-        sendMouse()
-        mouseReport.leftButton = false
-        sendMouse()
+        sendLeftClickOn()
+        sendLeftClickOff()
     }
     fun sendDoubleTapClick() {
         mouseReport.leftButton = true
@@ -73,13 +111,19 @@ open class MouseSender(
         sendMouse()
 
     }
-    fun sendRightClick() {
+    fun sendRightClickOn() {
         mouseReport.rightButton = true
         sendMouse()
-        Timer().schedule(50L) {
-            mouseReport.rightButton= false
-            sendMouse()
-        }
+
+    }
+    fun sendRightClickOff() {
+        mouseReport.rightButton = false
+        sendMouse()
+
+    }
+    fun sendRightClick(){
+        sendRightClickOn()
+        sendRightClickOff()
     }
 
     fun sendScroll(vscroll:Int,hscroll:Int){

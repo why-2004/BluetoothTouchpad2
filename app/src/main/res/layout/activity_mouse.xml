@@ -4,14 +4,66 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MouseActivity">
+    android:orientation="horizontal"
+    tools:context=".MouseActivity"
+    android:keepScreenOn="true"
+    android:layout_marginEnd="0dp"
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        android:onClick="test"
-        tools:layout_editor_absoluteX="205dp"
-        tools:layout_editor_absoluteY="261dp" />
+    android:background="#323232"
+    android:layout_columnWeight="1">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="0dp"
+        android:layout_marginEnd="0dp"
+
+        android:weightSum="1"
+        >
+
+        <TextView
+            android:id="@+id/touchpad"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.8"
+            />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.05"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:layout_weight="0.15"
+            android:layout_marginEnd="0dp"
+            android:layout_margin="0dp"
+            android:weightSum="1">
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="0dp"
+                android:layout_marginEnd="0dp"
+                android:backgroundTint="#545454"
+                android:layout_weight="0.499"/>
+
+
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="0dp"
+                android:layout_marginEnd="0dp"
+                android:backgroundTint="#545454"
+
+                android:layout_weight="0.499"/>
+        </LinearLayout>
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
