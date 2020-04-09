@@ -15,13 +15,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
+        <activity android:name=".MainActivity"
+            android:windowSoftInputMode="stateAlwaysHidden">
+        </activity>
         <activity
             android:name=".KeyboardActivity"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape"/>
         <activity
             android:name=".PointerActivity"
-            android:screenOrientation="landscape" />
-        <activity android:name=".TutorialActivity">
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
+
+        <activity android:name=".TutorialActivity"
+            android:windowSoftInputMode="stateAlwaysHidden"
+        >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -31,11 +38,13 @@
         <activity
             android:name=".NubActivity"
             android:screenOrientation="landscape"
-            tools:ignore="LockedOrientationActivity" />
+            tools:ignore="LockedOrientationActivity"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".MouseActivity"
             android:screenOrientation="landscape"
-            tools:ignore="LockedOrientationActivity" />
+            tools:ignore="LockedOrientationActivity"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
     </application>
 
 </manifest>

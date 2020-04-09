@@ -30,6 +30,7 @@ class TutorialActivity : Activity() {
             finish()
         }
 
+
     }
 
     fun klik(view: View) {
