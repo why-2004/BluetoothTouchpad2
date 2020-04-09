@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".KeyboardActivity"
+    android:keepScreenOn="true"
+    android:orientation="vertical"
+    android:background="#323232">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.8"
+        android:weightSum="1">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/left"
+            android:textColor="#E0E0E0"
+            android:background="#323232"
+            android:layout_gravity="left"
+            android:onClick="moveLeft"
+            android:gravity="center_horizontal"
+            tools:ignore="HardcodedText,NestedWeights,RtlHardcoded" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+
+            android:orientation="vertical">
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textColor="#E0E0E0"
+                    android:background="#545454"
+                    android:id="@+id/up"
+                    android:text="@string/up" />
+
+            </FrameLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+            <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#545454"
+                    android:text="@string/left"
+                    android:textColor="#E0E0E0" />
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="wrap_content" />
+
+                <Button
+                    android:id="@+id/down"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#545454"
+                    android:text="@string/down"
+                    android:textColor="#E0E0E0" />
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="wrap_content" />
+
+                <Button
+                    android:id="@+id/right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#545454"
+                    android:text="@string/right"
+                    android:textColor="#E0E0E0" />
+        </LinearLayout>
+        </LinearLayout>
+
+
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/right"
+            android:textColor="#E0E0E0"
+            android:background="#323232"
+            android:layout_gravity="right"
+            android:gravity="center_horizontal"
+            android:onClick="moveRight"
+            tools:ignore="HardcodedText,NestedWeights,RtlHardcoded" />
+    </FrameLayout>
+
+</LinearLayout>

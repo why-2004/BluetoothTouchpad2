@@ -77,22 +77,6 @@ class MouseGestureDetectListener(val rMouseSender : MouseSender,val c: Context) 
 //                        mCurrentDownEvent.recycle()
                         mCurrentDownEvent = MotionEvent.obtain(ev)
 
-                        //    if (System.currentTimeMillis() - downTimestamp > 50) {
-
-//                        if (!mHandler.hasMessages(TAP)) {
-//                            mHandler.sendEmptyMessageDelayed(
-//                                TAP,
-//                                DOUBLE_TAP_TIMEOUT
-//                            )
-//                        } else {
-//                            mHandler.removeMessages(TAP)
-//                            mHandler.sendEmptyMessageDelayed(
-//                                DOUBLE_TAP,
-//                                DOUBLE_TAP_TIMEOUT
-//                            )
-//                        }
-
-                        //        }
 
                         downTimestamp = System.currentTimeMillis()
 
@@ -100,7 +84,7 @@ class MouseGestureDetectListener(val rMouseSender : MouseSender,val c: Context) 
                         return true
                     }
                 }
-                MotionEvent.ACTION_POINTER_UP -> mPtrCount--
+                MotionEvent.ACTION_POINTER_UP ->{ mPtrCount--}
                 MotionEvent.ACTION_DOWN -> {
 
                     mPtrCount++
@@ -124,6 +108,9 @@ class MouseGestureDetectListener(val rMouseSender : MouseSender,val c: Context) 
 
                     }
 
+                    rMouseSender.sendMouseMove(0,0)
+                    rMouseSender.sendScroll(0,0)
+
 
                 }
             }
@@ -144,7 +131,7 @@ println("doubletap event")
                     Timer().schedule(150L) {
                         if(mPtrCount==1)
                         {
-                            notAConfirmedDoubleTapFlag=1;
+                            notAConfirmedDoubleTapFlag=1
                             rMouseSender.sendLeftClickOn()
                             Log.i("doubleddhtnew","this is on double tap and hold and also $DOUBLE_TAP_TIMEOUT and $e ")
 
@@ -215,14 +202,14 @@ println("doubletap event")
         if(mPtrCount==2) {
 
 
-            var dy = when {
+            val dy = when {
                 distanceY>7 -> -1
                 distanceY<-7 -> 1
                 distanceY==0f -> 0
                 else -> 0
             }
 
-            var dx = when {
+            val dx = when {
                 distanceX>2 -> 1
                 distanceX<-2 -> -1
                 else -> 0
@@ -246,11 +233,12 @@ println("doubletap event")
 
             stopScrollFlag=1
 
-        }else if (mPtrCount==3){
+        }
+        /*else if (mPtrCount==3){
             println("3fingerscroll")
             var dx = when {
-                distanceX>2 -> 1
-                distanceX<-2 -> -1
+                distanceX>10 -> 1
+                distanceX<-10 -> -1
                 else -> 0
             }
 
@@ -262,10 +250,9 @@ println("doubletap event")
                 //change to nub mode
 
                 println("changetonub")
-                c.startActivity(Intent(c,NubActivity::class.java))
             }
 
-        }
+        }*/
         return false
     }
 

@@ -5,6 +5,16 @@
     <string name="title_activity_mouse">MouseActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
-    <string name="leftArrow"><![CDATA[<------]]></string>
-    <string name="rightArrow"><![CDATA[------>]]></string>
+    <string name="tutorial_string">Thank you for testing! There are now 4 input methods: Trackpad, TouchNub, Pointer and Keyboard. \n\nTrackpad is self-explanatory. \n\nNub acts like a joystick, just like a Thinkpad TrackPoint or New Nintendo 3DS C-Stick. \n\nPointer acts like a magic mouse, Wii Remote or Switch Joy-Con: Just point and click! (You may need to center the pointer for stability.)\n\nKeyboard works like a normal keyboard, with arrow keys! (Please note that Swiftkey Keyboard is not supported due to bugs with spacebar.)\n\n Just use the buttons on the side to navigate!\n\n\n Connections:\nYou can connect to any Android phone or Windows computer (Apple products not officially supported yet). Simply connect to your phone from the computer (Make sure both have Bluetooth on!) and wait. (The pointer might freeze for a few seconds. This is normal.)\n\n\nThank you so much for trying my app!</string>
+    <string name="android_mousepad">Android Mousepad</string>
+    <string name="understood">Understood! (This message will not repeat on subsequent startups)</string>
+    <string name="proceed">Proceed</string>
+    <string name="recenter_detector">Recenter Detector</string>
+    <string name="gyro_not_avail">It seems that your phone does not support gyroscopic input, accelerometer input, or both. A such, please note that some features like Gyro Mouse will not be available.</string>
+    <string name="up">\u2191</string>
+    <string name="down">\u2193</string>
+    <string name="left">\u2190</string>
+    <string name="right">\u2192</string>
+
+
 </resources>

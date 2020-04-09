@@ -13,13 +13,6 @@ object BluetoothController: BluetoothHidDevice.Callback(), BluetoothProfile.Serv
     var context:Context?=null
 
 
-
-    override fun onSetReport(device: BluetoothDevice?, type: Byte, id: Byte, data: ByteArray?) {
-        super.onSetReport(device, type, id, data)
-
-    }
-
-
     override fun onGetReport(device: BluetoothDevice?, type: Byte, id: Byte, bufferSize: Int) {
 
         super.onGetReport(device, type, id, bufferSize)
@@ -28,7 +21,7 @@ object BluetoothController: BluetoothHidDevice.Callback(), BluetoothProfile.Serv
             featureReport.wheelResolutionMultiplier = true
             featureReport.acPanResolutionMultiplier = true
 
-            var wasrs=btHid?.replyReport(device, type, FeatureReport.ID, featureReport.bytes)
+            btHid?.replyReport(device, type, FeatureReport.ID, featureReport.bytes)
         }
 
 
@@ -130,7 +123,7 @@ object BluetoothController: BluetoothHidDevice.Callback(), BluetoothProfile.Serv
         super.onAppStatusChanged(pluggedDevice, registered)
         if(registered)
         {
-            var pairedDevices = btHid?.getDevicesMatchingConnectionStates(intArrayOf(BluetoothProfile.STATE_CONNECTING,BluetoothProfile.STATE_CONNECTED,BluetoothProfile.STATE_DISCONNECTED,BluetoothProfile.STATE_DISCONNECTING))
+            val pairedDevices = btHid?.getDevicesMatchingConnectionStates(intArrayOf(BluetoothProfile.STATE_CONNECTING,BluetoothProfile.STATE_CONNECTED,BluetoothProfile.STATE_DISCONNECTED,BluetoothProfile.STATE_DISCONNECTING))
             //Log.d("paired d", "paired devices are : $pairedDevices")
             //Log.d("paired d","${btHid?.getConnectionState(pairedDevices?.get(0))}")
             mpluggedDevice = pluggedDevice

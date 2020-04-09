@@ -3,6 +3,7 @@ package com.why.bluetoothtouchpad2
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.GestureDetector
@@ -11,6 +12,7 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.Button
 import android.widget.TextView
+import com.why.bluetoothtouchpad2.Main.isAppRunning
 import com.why.bluetoothtouchpad2.Main.mouse
 import com.why.bluetoothtouchpad2.bluetooth.*
 import com.why.bluetoothtouchpad2.bluetooth.BluetoothController.btHid
@@ -74,7 +76,7 @@ class MouseActivity : Activity(){
                     private var registeredListeners : MutableList<View.OnTouchListener> = ArrayList<View.OnTouchListener>()
 
 
-                    fun registerListener(listener : View.OnTouchListener): Unit{
+                    fun registerListener(listener : View.OnTouchListener) {
                         registeredListeners.add(listener)
 
                     }
@@ -135,15 +137,34 @@ class MouseActivity : Activity(){
 
     public override fun onStop() {
         super.onStop()
-//        btHid?.unregisterApp()
+        if (!isAppRunning(applicationContext,"com.why.bluetoothtouchpad2")) {
+            btHid?.unregisterApp()
 
-  //      hostDevice = null
-    //    btHid = null
+                  hostDevice = null
+                btHid = null
+            println("goodnight")
+        }
 
     }
 
+    fun moveLeft(view: View) {
+        startActivity(Intent(this,NubActivity::class.java))
+    }
+    fun moveRight(view: View) {
+        startActivity(Intent(this,KeyboardActivity::class.java))
 
-
+    }
+    override fun onWindowFocusChanged(hasFocus: Boolean) {
+        super.onWindowFocusChanged(hasFocus)
+        if (hasFocus) {
+            window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                    or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                    or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                    or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                    or View.SYSTEM_UI_FLAG_FULLSCREEN
+                    or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
+        }
+    }
 
 
 }

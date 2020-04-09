@@ -28,16 +28,16 @@ class MouseViewListener(val hidDevice: BluetoothHidDevice, val host: BluetoothDe
                 if(event.pointerCount==1) {
                     if(pointerMotionStopFlag==1) pointerMotionStopFlag=0
                     //Log.d("is this working",event.pointerCount.toString())
-                    var dx: Float = x - previousX
-                    var dxInt: Int = dx.roundToInt()
+                    val dx: Float = x - previousX
+                    var dxInt: Int = (dx/1.5).roundToInt()
 
 
                     if (dxInt > 2047) dxInt = 2047
 
                     if (dxInt < -2047) dxInt = -2047
 
-                    var dy: Float = y - previousY
-                    var dyInt: Int = dy.roundToInt()
+                    val dy: Float = y - previousY
+                    var dyInt: Int = (dy/1.5).roundToInt()
                     if (dyInt > 2047) dyInt = 2047
 
 

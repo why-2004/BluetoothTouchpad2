@@ -19,7 +19,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="@string/leftArrow"
+            android:text="@string/left"
             android:textColor="#E0E0E0"
             android:background="#323232"
             android:layout_gravity="left"
@@ -41,7 +41,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="@string/rightArrow"
+            android:text="@string/right"
             android:textColor="#E0E0E0"
             android:background="#323232"
             android:layout_gravity="right"

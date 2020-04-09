@@ -21,13 +21,38 @@
 
         android:weightSum="1"
         >
-
-        <TextView
-            android:id="@+id/touchpad"
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.8"
-            />
+            >
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/left"
+                android:textColor="#E0E0E0"
+                android:background="#323232"
+                android:layout_gravity="left"
+                android:onClick="moveLeft"
+                tools:ignore="HardcodedText,NestedWeights,RtlHardcoded" />
+            <TextView
+                android:id="@+id/touchpad"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/right"
+                android:textColor="#E0E0E0"
+                android:background="#323232"
+                android:layout_gravity="right"
+                android:onClick="moveRight"
+                tools:ignore="HardcodedText,NestedWeights,RtlHardcoded" />
+
+        </FrameLayout>
+
 
         <Space
             android:layout_width="match_parent"
