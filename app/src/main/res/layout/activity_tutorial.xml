@@ -31,7 +31,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/android_mousepad"
+                    android:text="@string/app_name"
                     android:textAlignment="center"
                     android:textColor="#E0E0E0"
                     android:textSize="30sp" />
