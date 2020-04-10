@@ -15,26 +15,28 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".MainActivity"
-            android:windowSoftInputMode="stateAlwaysHidden"
+        <activity android:name=".ControllerActivity"
+            android:noHistory="true"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".MainActivity"
             android:noHistory="true"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Material.Light.NoActionBar">
-        </activity>
+            android:theme="@android:style/Theme.Material.Light.NoActionBar"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".KeyboardActivity"
-            android:screenOrientation="landscape"
-            android:noHistory="true"/>
+            android:noHistory="true"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".PointerActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            android:noHistory="true"/>
-
-        <activity android:name=".TutorialActivity"
-            android:windowSoftInputMode="stateAlwaysHidden"
             android:noHistory="true"
-        >
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".TutorialActivity"
+            android:noHistory="true"
+            android:windowSoftInputMode="stateAlwaysHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -43,16 +45,16 @@
         </activity>
         <activity
             android:name=".NubActivity"
+            android:noHistory="true"
             android:screenOrientation="landscape"
-            tools:ignore="LockedOrientationActivity"
             android:windowSoftInputMode="stateAlwaysHidden"
-            android:noHistory="true"/>
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".MouseActivity"
+            android:noHistory="true"
             android:screenOrientation="landscape"
-            tools:ignore="LockedOrientationActivity"
             android:windowSoftInputMode="stateAlwaysHidden"
-            android:noHistory="true"/>
+            tools:ignore="LockedOrientationActivity" />
     </application>
 
 </manifest>

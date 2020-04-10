@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".KeyboardActivity"
+    android:background="#323232"
     android:keepScreenOn="true"
     android:orientation="vertical"
-    android:background="#323232">
+    tools:context=".KeyboardActivity">
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -17,42 +18,47 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:background="#323232"
+            android:gravity="center_horizontal"
+            android:onClick="moveLeft"
             android:text="@string/left"
             android:textColor="#E0E0E0"
-            android:background="#323232"
-            android:layout_gravity="left"
-            android:onClick="moveLeft"
-            android:gravity="center_horizontal"
             tools:ignore="HardcodedText,NestedWeights,RtlHardcoded" />
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:orientation="horizontal">
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
 
                 android:orientation="vertical">
+
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
+
                     <Button
+                        android:id="@+id/up"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:textColor="#E0E0E0"
                         android:background="#545454"
-                        android:id="@+id/up"
-                        android:text="@string/up" />
+                        android:text="@string/up"
+                        android:textColor="#E0E0E0" />
 
                 </FrameLayout>
 
                 <Space
                     android:layout_width="match_parent"
                     android:layout_height="10dp" />
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -65,6 +71,7 @@
                         android:background="#545454"
                         android:text="@string/left"
                         android:textColor="#E0E0E0" />
+
                     <Space
                         android:layout_width="10dp"
                         android:layout_height="wrap_content" />
@@ -76,6 +83,7 @@
                         android:background="#545454"
                         android:text="@string/down"
                         android:textColor="#E0E0E0" />
+
                     <Space
                         android:layout_width="10dp"
                         android:layout_height="wrap_content" />
@@ -88,23 +96,90 @@
                         android:text="@string/right"
                         android:textColor="#E0E0E0" />
                 </LinearLayout>
+
+            </LinearLayout>
+            <Space
+                android:layout_height="match_parent"
+                android:layout_width="10dp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/ctrl"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="#545454"
+                        android:text="@string/ctrl"
+                        android:textColor="#E0E0E0" />
+                    <Space
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content" />
+
+                    <Button
+                        android:id="@+id/alt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="#545454"
+                        android:text="@string/alt"
+                        android:textColor="#E0E0E0" />
+
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/tab"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="#545454"
+                        android:text="@string/tab"
+                        android:textColor="#E0E0E0" />
+
+
+                    <Space
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content" />
+
+                    <Button
+                        android:id="@+id/del"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="#545454"
+                        android:text="@string/del"
+                        android:textColor="#E0E0E0" />
+                </LinearLayout>
             </LinearLayout>
 
         </LinearLayout>
 
 
-
-
-
         <Button
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="@string/right"
-            android:textColor="#E0E0E0"
-            android:background="#323232"
             android:layout_gravity="right"
+            android:background="#323232"
             android:gravity="center_horizontal"
             android:onClick="moveRight"
+            android:text="@string/right"
+            android:textColor="#E0E0E0"
             tools:ignore="HardcodedText,NestedWeights,RtlHardcoded" />
     </FrameLayout>
 

@@ -92,26 +92,49 @@ class MainActivity : Activity() {
 
     fun trackpad(view: View) {
         mp?.start()
-        startActivity(Intent(this,MouseActivity::class.java))
+        if(connected) {
+            startActivity(Intent(this, MouseActivity::class.java))
+        }else{
+            Toast.makeText(applicationContext, getString(R.string.connect_first), Toast.LENGTH_LONG).show()
+
+        }
 
     }
     fun trackpoint(view: View) {
         mp?.start()
-        startActivity(Intent(this,NubActivity::class.java))
+        if(connected) {
+            startActivity(Intent(this, NubActivity::class.java))
+        }else{
+            Toast.makeText(applicationContext, getString(R.string.connect_first), Toast.LENGTH_LONG).show()
 
+        }
     }
     fun pointer(view: View) {
         mp?.start()
-        startActivity(Intent(this,PointerActivity::class.java))
+        if(connected) {
+            startActivity(Intent(this, PointerActivity::class.java))
+        }else{
+            Toast.makeText(applicationContext, getString(R.string.connect_first), Toast.LENGTH_LONG).show()
 
+        }
     }
     fun keyboard(view: View) {
         mp?.start()
-        startActivity(Intent(this,KeyboardActivity::class.java))
+        if(connected) {
+            startActivity(Intent(this, KeyboardActivity::class.java))
+        }else{
+            Toast.makeText(applicationContext, getString(R.string.connect_first), Toast.LENGTH_LONG).show()
 
+        }
     }
     fun procontroller(view: View) {
         mp?.start()
+        if(connected) {
+            startActivity(Intent(this, ControllerActivity::class.java))
+        }else{
+            Toast.makeText(applicationContext, getString(R.string.connect_first), Toast.LENGTH_LONG).show()
+
+        }
     }
 
     override fun onRestart() {

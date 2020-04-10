@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#323232"
+    android:keepScreenOn="true"
+    tools:context=".ControllerActivity">
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal">
+
+        <EditText
+            android:id="@+id/edittext"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:backgroundTint="#212121"
+            android:background="#FFFFFF"
+            android:textColor="#F0F0F0"
+            android:backgroundTintMode="multiply"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#E0E0E0"
+            android:text="@string/send_text"
+            android:onClick="rush"
+            android:backgroundTint="#434343"/>
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#E0E0E0"
+            android:text="@string/auto_click"
+            android:id="@+id/jitter"
+            android:backgroundTint="#434343"/>
+    </LinearLayout>
+
+</FrameLayout>

@@ -21,6 +21,15 @@
     <string name="pointer">Pointer</string>
     <string name="keyboard">Keyboard</string>
     <string name="bluetooth_connected">Bluetooth Connected!</string>
+    <string name="connect_first">Please connect first!</string>
+    <string name="ctrl">Ctrl</string>
+    <string name="alt">Alt</string>
+    <string name="tab">Tab</string>
+    <string name="win">Win</string>
+    <string name="del">Del</string>
+    <string name="text_pipe">Text Pipe</string>
+    <string name="send_text">Send text!</string>
+    <string name="auto_click">Auto-Click</string>
 
 
 </resources>

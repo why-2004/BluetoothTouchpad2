@@ -13,6 +13,7 @@ import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import com.why.bluetoothtouchpad2.bluetooth.BluetoothController
+import com.why.bluetoothtouchpad2.bluetooth.KeyboardReport
 import com.why.bluetoothtouchpad2.bluetooth.KeyboardSender
 import com.why.bluetoothtouchpad2.bluetooth.Sender
 
@@ -116,15 +117,11 @@ class KeyboardActivity : Activity() {
             Main.mp?.start()
             when(m.action){
                 MotionEvent.ACTION_DOWN->{
-                    rKeyboardSender?.sendKeyboard(KeyEvent.KEYCODE_DPAD_UP,
-                        KeyEvent(KeyEvent.ACTION_DOWN,KeyEvent.KEYCODE_DPAD_UP),modifierCheckedState
-                    )
+                    rKeyboardSender?.sendKeyOn(KeyboardReport.KeyEventMap[KeyEvent.KEYCODE_DPAD_UP])
                 }
-                /*MotionEvent.ACTION_UP->{
-                    rKeyboardSender?.sendKeyboard(KeyEvent.KEYCODE_DPAD_UP,
-                        KeyEvent(KeyEvent.ACTION_UP,KeyEvent.KEYCODE_DPAD_UP),modifierCheckedState
-                    )
-                }*/
+                MotionEvent.ACTION_UP->{
+                    rKeyboardSender?.sendKeyOff()
+                }
             }
             return@setOnTouchListener true
         }
@@ -132,15 +129,12 @@ class KeyboardActivity : Activity() {
             Main.mp?.start()
             when(m.action){
                 MotionEvent.ACTION_DOWN->{
-                    rKeyboardSender?.sendKeyboard(KeyEvent.KEYCODE_DPAD_LEFT,
-                        KeyEvent(KeyEvent.ACTION_DOWN,KeyEvent.KEYCODE_DPAD_LEFT),modifierCheckedState
-                    )
+                    rKeyboardSender?.sendKeyOn(KeyboardReport.KeyEventMap[KeyEvent.KEYCODE_DPAD_LEFT])
                 }
-                /*MotionEvent.ACTION_UP->{
-                    rKeyboardSender?.sendKeyboard(KeyEvent.KEYCODE_DPAD_LEFT,
-                        KeyEvent(KeyEvent.ACTION_UP,KeyEvent.KEYCODE_DPAD_LEFT),modifierCheckedState
-                    )
-                }*/
+                MotionEvent.ACTION_UP->{
+                    rKeyboardSender?.sendKeyOff()
+
+                }
             }
             return@setOnTouchListener true
         }
@@ -148,15 +142,12 @@ class KeyboardActivity : Activity() {
             Main.mp?.start()
             when(m.action){
                 MotionEvent.ACTION_DOWN->{
-                    rKeyboardSender?.sendKeyboard(KeyEvent.KEYCODE_DPAD_RIGHT,
-                        KeyEvent(KeyEvent.ACTION_DOWN,KeyEvent.KEYCODE_DPAD_RIGHT),modifierCheckedState
-                    )
+                    rKeyboardSender?.sendKeyOn(KeyboardReport.KeyEventMap[KeyEvent.KEYCODE_DPAD_RIGHT])
+
                 }
-                /*MotionEvent.ACTION_UP->{
-                    rKeyboardSender?.sendKeyboard(KeyEvent.KEYCODE_DPAD_RIGHT,
-                        KeyEvent(KeyEvent.ACTION_UP,KeyEvent.KEYCODE_DPAD_RIGHT),modifierCheckedState
-                    )
-                }*/
+                MotionEvent.ACTION_UP->{
+                    rKeyboardSender?.sendKeyOff()
+                }
             }
             return@setOnTouchListener true
         }
@@ -165,21 +156,64 @@ class KeyboardActivity : Activity() {
             Main.mp?.start()
             when(m.action){
                 MotionEvent.ACTION_DOWN->{
-                    rKeyboardSender?.sendKeyboard(KeyEvent.KEYCODE_DPAD_DOWN,
-                        KeyEvent(KeyEvent.ACTION_DOWN,KeyEvent.KEYCODE_DPAD_DOWN),modifierCheckedState
-                    )
+                    rKeyboardSender?.sendKeyOn(KeyboardReport.KeyEventMap[KeyEvent.KEYCODE_DPAD_DOWN])
                 }
-                /*MotionEvent.ACTION_UP->{
-                    rKeyboardSender?.sendKeyboard(KeyEvent.KEYCODE_DPAD_DOWN,
-                        KeyEvent(KeyEvent.ACTION_UP,KeyEvent.KEYCODE_DPAD_DOWN),modifierCheckedState
-                    )
-                    //rKeyboardSender?.sendKeyboard(KeyEvent.KEYCODE_DPAD_DOWN,
-                    //    KeyEvent(KeyEvent.ACTION_UP,KeyEvent.KEYCODE_DPAD_DOWN),modifierCheckedState
-                    //)
-                }*/
+                MotionEvent.ACTION_UP->{
+                    rKeyboardSender?.sendKeyOff()
+                }
             }
             return@setOnTouchListener true
         }
+        findViewById<Button>(R.id.ctrl).setOnTouchListener{ v, m->
+            Main.mp?.start()
+            when(m.action){
+                MotionEvent.ACTION_DOWN->{
+                    rKeyboardSender?.keyboardReport?.leftControl=true
+                }
+                MotionEvent.ACTION_UP->{
+                    rKeyboardSender?.keyboardReport?.leftControl=false
+                }
+            }
+            return@setOnTouchListener true
+        }
+        findViewById<Button>(R.id.alt).setOnTouchListener{ v, m->
+            Main.mp?.start()
+            when(m.action){
+                MotionEvent.ACTION_DOWN->{
+                    rKeyboardSender?.keyboardReport?.leftAlt=true
+                }
+                MotionEvent.ACTION_UP->{
+                    rKeyboardSender?.keyboardReport?.leftAlt=false
+                }
+            }
+            return@setOnTouchListener true
+        }
+        findViewById<Button>(R.id.del).setOnTouchListener{ v, m->
+            Main.mp?.start()
+            when(m.action){
+                MotionEvent.ACTION_DOWN->{
+                    rKeyboardSender?.sendKeyOn(KeyboardReport.KeyEventMap[KeyEvent.KEYCODE_DEL])
+                }
+                MotionEvent.ACTION_UP->{
+                    rKeyboardSender?.sendKeyOff()
+                }
+
+                   }
+            return@setOnTouchListener true
+        }
+        findViewById<Button>(R.id.tab).setOnTouchListener{ v, m->
+            Main.mp?.start()
+            when(m.action){
+                MotionEvent.ACTION_DOWN->{
+                    rKeyboardSender?.sendKeyOn(KeyboardReport.KeyEventMap[KeyEvent.KEYCODE_TAB])
+                }
+                MotionEvent.ACTION_UP->{
+                    rKeyboardSender?.sendKeyOff()
+                }
+            }
+            return@setOnTouchListener true
+        }
+
 
         BluetoothController.getDisconnector {
             val mainHandler = Handler(this.mainLooper)

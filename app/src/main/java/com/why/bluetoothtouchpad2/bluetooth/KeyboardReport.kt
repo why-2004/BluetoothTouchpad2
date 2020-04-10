@@ -85,6 +85,7 @@ inline class KeyboardReport (
         set(value) { bytes[2] = value }
 
 
+
     fun reset() = bytes.fill(0)
 
     companion object {
@@ -177,19 +178,6 @@ inline class KeyboardReport (
             KeyEvent.KEYCODE_AT to 31,
             KeyEvent.KEYCODE_POUND to 32,
             KeyEvent.KEYCODE_STAR to 37
-
-
-
-
-
-
-
-
-
-
         )
-
-
-
     }
 }
