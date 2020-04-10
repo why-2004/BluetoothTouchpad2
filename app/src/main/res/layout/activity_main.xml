@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,10 +7,142 @@
     android:background="#323232"
     android:orientation="vertical"
     tools:context=".MainActivity">
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp">
 
-    </ScrollView>
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:background="?android:attr/listDivider" />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/choose_a_control_type"
+            android:textAlignment="center"
+            android:textColor="#E0E0E0"
+            android:textSize="35sp" />
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="?android:attr/listDivider" />
+
+
+            <Button
+                android:id="@+id/buttonAbout"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:backgroundTint="#323232"
+                android:onClick="trackpad"
+                android:text="@string/trackpad"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="#E0E0E0"
+                android:textSize="20sp" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+
+
+            <Button
+                android:id="@+id/buttonAchievements"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:backgroundTint="#323232"
+                android:onClick="trackpoint"
+                android:text="@string/trackpoint"
+                android:textColor="#E0E0E0"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="0.5" />
+
+            <Button
+                android:id="@+id/buttonActivities"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:backgroundTint="#323232"
+                android:onClick="pointer"
+
+                android:text="@string/pointer"
+                android:textColor="#E0E0E0"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <View
+                android:id="@+id/vie2w2"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="0.5" />
+
+            <Button
+                android:id="@+id/buttonWebsite"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:backgroundTint="#323232"
+                android:textColor="#E0E0E0"
+                android:onClick="keyboard"
+                android:text="@string/keyboard"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="0.5" />
+
+            <Button
+                android:id="@+id/buttonSYFCWebsite"
+                android:textColor="#E0E0E0"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:backgroundTint="#323232"
+                android:onClick="procontroller"
+                android:text="Pro Controller (coming soon?)"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

@@ -31,7 +31,7 @@
                 android:layout_height="match_parent"
                 android:text="@string/left"
                 android:textColor="#E0E0E0"
-                android:background="#323232"
+                android:backgroundTint="#323232"
                 android:layout_gravity="left"
                 android:onClick="moveLeft"
                 tools:ignore="HardcodedText,NestedWeights,RtlHardcoded" />
@@ -46,7 +46,7 @@
                 android:layout_height="match_parent"
                 android:text="@string/right"
                 android:textColor="#E0E0E0"
-                android:background="#323232"
+                android:backgroundTint="#323232"
                 android:layout_gravity="right"
                 android:onClick="moveRight"
                 tools:ignore="HardcodedText,NestedWeights,RtlHardcoded" />

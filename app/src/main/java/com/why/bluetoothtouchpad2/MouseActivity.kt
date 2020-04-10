@@ -55,13 +55,9 @@ class MouseActivity : Activity(){
             val mainHandler = Handler(this.mainLooper)
             mainHandler.post {
 
-                mouse =
-                    MouseSender(
-                        hid,
-                        device
-                    )
 
-                m = Sender(mouse!!, hid, device)
+
+                m = Sender(Main.mouse!!, hid, device)
                 println("hihihi")
 
                 val viewTouchListener = MouseViewListener(hid, device, mouse!!)
@@ -113,6 +109,7 @@ class MouseActivity : Activity(){
         }
 
         findViewById<Button>(R.id.button).setOnTouchListener{v,m->
+            Main.mp?.start()
             when(m.action){
                 MotionEvent.ACTION_DOWN->{
                     mouse?.sendLeftClickOn()
@@ -124,6 +121,7 @@ class MouseActivity : Activity(){
             return@setOnTouchListener true
         }
         findViewById<Button>(R.id.button2).setOnTouchListener{v,m->
+            Main.mp?.start()
             when(m.action){
                 MotionEvent.ACTION_DOWN->{
                     mouse?.sendRightClickOn()
@@ -156,9 +154,11 @@ class MouseActivity : Activity(){
 
     fun moveLeft(view: View) {
         startActivity(Intent(this,NubActivity::class.java))
+        Main.mp?.start()
     }
     fun moveRight(view: View) {
         startActivity(Intent(this,KeyboardActivity::class.java))
+        Main.mp?.start()
 
     }
     override fun onWindowFocusChanged(hasFocus: Boolean) {
@@ -178,6 +178,9 @@ class MouseActivity : Activity(){
         window.setSoftInputMode(
             WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN
         )
+    }
+    override fun onBackPressed() {
+        startActivity(Intent(this,MainActivity::class.java))
     }
 
 

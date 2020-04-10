@@ -16,18 +16,23 @@
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity android:name=".MainActivity"
-            android:windowSoftInputMode="stateAlwaysHidden">
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:noHistory="true"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".KeyboardActivity"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape"
+            android:noHistory="true"/>
         <activity
             android:name=".PointerActivity"
-            android:screenOrientation="landscape"
-            android:windowSoftInputMode="stateAlwaysHidden"/>
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:noHistory="true"/>
 
         <activity android:name=".TutorialActivity"
             android:windowSoftInputMode="stateAlwaysHidden"
+            android:noHistory="true"
         >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,12 +44,14 @@
             android:name=".NubActivity"
             android:screenOrientation="landscape"
             tools:ignore="LockedOrientationActivity"
-            android:windowSoftInputMode="stateAlwaysHidden" />
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:noHistory="true"/>
         <activity
             android:name=".MouseActivity"
             android:screenOrientation="landscape"
             tools:ignore="LockedOrientationActivity"
-            android:windowSoftInputMode="stateAlwaysHidden"/>
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:noHistory="true"/>
     </application>
 
 </manifest>
