@@ -64,10 +64,15 @@ class KeyboardActivity : Activity() {
     }
 
     override fun onBackPressed() {
-        //super.onBackPressed()
+        startActivity(Intent(this,MainActivity::class.java))
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        Main.mp?.start()
+        if (keyCode==KeyEvent.KEYCODE_BACK ){
+            startActivity(Intent(this,MainActivity::class.java))
+
+        }
 
         return if(rKeyboardSender !=null && event !=null) {
             false
@@ -108,6 +113,7 @@ class KeyboardActivity : Activity() {
 
         }
         findViewById<Button>(R.id.up).setOnTouchListener{ v, m->
+            Main.mp?.start()
             when(m.action){
                 MotionEvent.ACTION_DOWN->{
                     rKeyboardSender?.sendKeyboard(KeyEvent.KEYCODE_DPAD_UP,
@@ -123,6 +129,7 @@ class KeyboardActivity : Activity() {
             return@setOnTouchListener true
         }
         findViewById<Button>(R.id.left).setOnTouchListener{ v, m->
+            Main.mp?.start()
             when(m.action){
                 MotionEvent.ACTION_DOWN->{
                     rKeyboardSender?.sendKeyboard(KeyEvent.KEYCODE_DPAD_LEFT,
@@ -138,6 +145,7 @@ class KeyboardActivity : Activity() {
             return@setOnTouchListener true
         }
         findViewById<Button>(R.id.right).setOnTouchListener{ v, m->
+            Main.mp?.start()
             when(m.action){
                 MotionEvent.ACTION_DOWN->{
                     rKeyboardSender?.sendKeyboard(KeyEvent.KEYCODE_DPAD_RIGHT,
@@ -154,6 +162,7 @@ class KeyboardActivity : Activity() {
         }
 
         findViewById<Button>(R.id.down).setOnTouchListener{ v, m->
+            Main.mp?.start()
             when(m.action){
                 MotionEvent.ACTION_DOWN->{
                     rKeyboardSender?.sendKeyboard(KeyEvent.KEYCODE_DPAD_DOWN,
@@ -186,11 +195,13 @@ class KeyboardActivity : Activity() {
     }
 
     fun moveLeft(view: View) {
+        Main.mp?.start()
         startActivity(Intent(this,MouseActivity::class.java))
 
     }
     fun moveRight(view: View) {
-        startActivity(Intent(this,PointerActivity::class.java))
+        Main.mp?.start()
+        startActivity(Intent(this,NubActivity::class.java))
 
     }
 

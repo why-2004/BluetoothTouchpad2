@@ -2,7 +2,11 @@
   <dictionary name="user">
     <words>
       <w>bluetoothtouchpad</w>
+      <w>byebyebye</w>
+      <w>procontroller</w>
+      <w>snackbar</w>
       <w>touchpad</w>
+      <w>trackpoint</w>
     </words>
   </dictionary>
 </component>

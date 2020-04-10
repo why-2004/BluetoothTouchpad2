@@ -15,6 +15,12 @@
     <string name="down">\u2193</string>
     <string name="left">\u2190</string>
     <string name="right">\u2192</string>
+    <string name="choose_a_control_type">Choose a control type!</string>
+    <string name="trackpad">Trackpad</string>
+    <string name="trackpoint">TrackPoint</string>
+    <string name="pointer">Pointer</string>
+    <string name="keyboard">Keyboard</string>
+    <string name="bluetooth_connected">Bluetooth Connected!</string>
 
 
 </resources>

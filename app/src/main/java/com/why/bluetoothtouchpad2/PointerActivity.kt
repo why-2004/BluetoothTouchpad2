@@ -9,6 +9,7 @@ import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.Bundle
 import android.os.Handler
+import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import android.view.WindowManager
@@ -33,9 +34,7 @@ class PointerActivity : AppCompatActivity(), SensorEventListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pointer)
-        window.setFlags(
-            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+
         mSensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
         //mGyroscope = mSensorManager!!.getDefaultSensor(Sensor.TYPE_GYROSCOPE)
         mRotation=mSensorManager!!.getDefaultSensor(Sensor.TYPE_GAME_ROTATION_VECTOR)
@@ -43,6 +42,9 @@ class PointerActivity : AppCompatActivity(), SensorEventListener {
         mSensorManager!!.registerListener(this, this.mRotation, SensorManager.SENSOR_DELAY_FASTEST)
 
 
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
         val decorView = window.decorView
         decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                 or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
@@ -84,6 +86,7 @@ class PointerActivity : AppCompatActivity(), SensorEventListener {
         }
 
         findViewById<Button>(R.id.button).setOnTouchListener{ v, m->
+            Main.mp?.start()
             when(m.action){
                 MotionEvent.ACTION_DOWN->{
                     Main.mouse?.sendLeftClickOn()
@@ -95,6 +98,7 @@ class PointerActivity : AppCompatActivity(), SensorEventListener {
             return@setOnTouchListener true
         }
         findViewById<Button>(R.id.button2).setOnTouchListener{ v, m->
+            Main.mp?.start()
             when(m.action){
                 MotionEvent.ACTION_DOWN->{
                     Main.mouse?.sendRightClickOn()
@@ -117,6 +121,11 @@ class PointerActivity : AppCompatActivity(), SensorEventListener {
 
     }
 
+    public override fun onDestroy() {
+        mSensorManager?.unregisterListener(this)
+        super.onDestroy()
+    }
+
     public override fun onStop() {
         mSensorManager?.unregisterListener(this)
         super.onStop()
@@ -129,12 +138,17 @@ class PointerActivity : AppCompatActivity(), SensorEventListener {
     }
 
     fun moveLeft(view: View) {
+        Main.mp?.start()
         startActivity(Intent(this,KeyboardActivity::class.java))
 
     }
     fun moveRight(view: View) {
+        Main.mp?.start()
         startActivity(Intent(this,NubActivity::class.java))
 
+    }
+    override fun onBackPressed() {
+        startActivity(Intent(this,MainActivity::class.java))
     }
 
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
@@ -177,7 +191,11 @@ class PointerActivity : AppCompatActivity(), SensorEventListener {
     override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)
         if (hasFocus) {
-            window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+            window.setFlags(
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+            val decorView = window.decorView
+            decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                     or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
                     or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                     or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
@@ -189,5 +207,24 @@ class PointerActivity : AppCompatActivity(), SensorEventListener {
     fun recenter(view: View) {
         offsetX=GyroX
         offsetY=GyroY
+    }
+
+    override fun onCreateView(
+        parent: View?,
+        name: String,
+        context: Context,
+        attrs: AttributeSet
+    ): View? {
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+        val decorView = window.decorView
+        decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                or View.SYSTEM_UI_FLAG_FULLSCREEN
+                or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
+        return super.onCreateView(parent, name, context, attrs)
     }
 }

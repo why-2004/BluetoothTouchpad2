@@ -39,12 +39,17 @@ class NubActivity : Activity() {
     }
 
     fun moveLeft(view: View) {
-        startActivity(Intent(this, PointerActivity::class.java))
+        Main.mp?.start()
+        startActivity(Intent(this, KeyboardActivity::class.java))
     }
 
     fun moveRight(view: View) {
+        Main.mp?.start()
         startActivity(Intent(this, MouseActivity::class.java))
 
+    }
+    override fun onBackPressed() {
+        startActivity(Intent(this,MainActivity::class.java))
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -95,6 +100,7 @@ class NubActivity : Activity() {
         }
 
         findViewById<Button>(R.id.button).setOnTouchListener { v, m ->
+            Main.mp?.start()
             when (m.action) {
                 MotionEvent.ACTION_DOWN -> {
                     mouse?.sendLeftClickOn()
@@ -106,6 +112,7 @@ class NubActivity : Activity() {
             return@setOnTouchListener true
         }
         findViewById<Button>(R.id.button2).setOnTouchListener { v, m ->
+            Main.mp?.start()
             when (m.action) {
                 MotionEvent.ACTION_DOWN -> {
                     mouse?.sendRightClickOn()
