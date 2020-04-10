@@ -1,15 +1,21 @@
 package com.why.bluetoothtouchpad2
 
 import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.hardware.Sensor
+import android.hardware.SensorManager
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
 import android.view.WindowManager
+import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
+import com.why.bluetoothtouchpad2.Main.hasGyro
 import com.why.bluetoothtouchpad2.Main.mouse
 import com.why.bluetoothtouchpad2.Main.mp
 import com.why.bluetoothtouchpad2.bluetooth.BluetoothController
@@ -17,7 +23,7 @@ import com.why.bluetoothtouchpad2.bluetooth.MouseSender
 import com.why.bluetoothtouchpad2.bluetooth.Sender
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : Activity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,6 +40,11 @@ class MainActivity : AppCompatActivity() {
                 or View.SYSTEM_UI_FLAG_FULLSCREEN
                 or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
         mp = MediaPlayer.create(this,R.raw.click)
+
+        if (!hasGyro){
+            findViewById<Button>(R.id.buttonPointer).height=0
+            findViewById<Button>(R.id.buttonPointer).visibility=View.GONE
+        }
 
 
     }
@@ -73,6 +84,7 @@ class MainActivity : AppCompatActivity() {
         connected=false
         }
     }
+
 
 
 }

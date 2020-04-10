@@ -18,7 +18,8 @@
         <activity android:name=".MainActivity"
             android:windowSoftInputMode="stateAlwaysHidden"
             android:noHistory="true"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Material.Light.NoActionBar">
         </activity>
         <activity
             android:name=".KeyboardActivity"

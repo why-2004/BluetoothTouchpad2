@@ -48,12 +48,6 @@
                 android:textSize="20sp" />
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2">
-
 
 
             <Button
@@ -67,21 +61,10 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textSize="20sp" />
 
-        </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2">
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="60dp"
-                android:layout_weight="0.5" />
 
             <Button
-                android:id="@+id/buttonActivities"
+                android:id="@+id/buttonPointer"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:backgroundTint="#323232"
@@ -92,19 +75,8 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textSize="20sp" />
 
-        </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2">
 
-            <View
-                android:id="@+id/vie2w2"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="0.5" />
 
             <Button
                 android:id="@+id/buttonWebsite"
@@ -117,18 +89,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textSize="20sp" />
 
-        </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2">
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="0.5" />
 
             <Button
                 android:id="@+id/buttonSYFCWebsite"
@@ -141,7 +102,6 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textSize="20sp" />
 
-        </LinearLayout>
 
     </LinearLayout>
 

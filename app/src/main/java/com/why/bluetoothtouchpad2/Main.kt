@@ -12,6 +12,7 @@ object Main {
     lateinit var c:Context
     var mouse: MouseSender?=null
     var mp:MediaPlayer?=null
+    var hasGyro=true
 
     fun init(co:Context){
         c=co

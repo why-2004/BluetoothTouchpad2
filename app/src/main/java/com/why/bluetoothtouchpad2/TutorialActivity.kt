@@ -13,6 +13,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
 import android.widget.TextView
+import com.why.bluetoothtouchpad2.Main.hasGyro
 import java.io.File
 
 class TutorialActivity : Activity() {
@@ -35,6 +36,7 @@ class TutorialActivity : Activity() {
                 or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
         f = this.filesDir.resolve("disclaimer.txt")
         if (( getSystemService(Context.SENSOR_SERVICE) as SensorManager).getDefaultSensor(Sensor.TYPE_GAME_ROTATION_VECTOR)==null){
+            hasGyro=false
             findViewById<TextView>(R.id.tutorial_text).text = getString(R.string.tutorial_string)+"\n"+getString(R.string.gyro_not_avail)
         }
         if (f.exists()&&f.readText()=="...") {
