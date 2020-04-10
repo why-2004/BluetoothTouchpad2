@@ -84,14 +84,7 @@ class ControllerActivity : Activity() {
         }
         findViewById<Button>(R.id.jitter).setOnTouchListener{ v, m->
             Main.mp?.start()
-            when(m.action){
-                MotionEvent.ACTION_DOWN->{
-                    mouse?.sendAutoClick()
-                }
-                MotionEvent.ACTION_UP->{
-
-                }
-            }
+            mouse?.sendAutoClick()
             return@setOnTouchListener true
         }
 
@@ -119,8 +112,14 @@ class ControllerActivity : Activity() {
                         rKeyboardSender?.sendKeyOn(i.toInt() - 93)
                     }
                     i.isDigit() -> {
-                        rKeyboardSender?.keyboardReport?.leftShift = false
-                        rKeyboardSender?.sendKeyOn(i.toInt() - 18)
+                        if(i=='0'){
+                            rKeyboardSender?.keyboardReport?.leftShift = false
+                            rKeyboardSender?.sendKeyOn(39)
+
+                        }else {
+                            rKeyboardSender?.keyboardReport?.leftShift = false
+                            rKeyboardSender?.sendKeyOn(i.toInt() - 19)
+                        }
                     }
                     else -> {
                         when (i) {
@@ -262,4 +261,6 @@ class ControllerActivity : Activity() {
 
 
     }
+
+
 }
