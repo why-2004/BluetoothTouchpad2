@@ -50,7 +50,7 @@ class KeyboardActivity : Activity() {
     public override fun onStop() {
         super.onStop()
         //imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,0)
-        var view: View? = this.getCurrentFocus()
+        var view: View? = this.currentFocus
         if (view == null) {
             view = View(this)
         }
@@ -192,7 +192,7 @@ class KeyboardActivity : Activity() {
             Main.mp?.start()
             when(m.action){
                 MotionEvent.ACTION_DOWN->{
-                    rKeyboardSender?.sendKeyOn(KeyboardReport.KeyEventMap[KeyEvent.KEYCODE_DEL])
+                    rKeyboardSender?.sendKeyOn(KeyboardReport.KeyEventMap[KeyEvent.KEYCODE_FORWARD_DEL])
                 }
                 MotionEvent.ACTION_UP->{
                     rKeyboardSender?.sendKeyOff()

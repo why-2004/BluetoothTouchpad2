@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">蓝牙触控板</string>
+    <string name="not_ble_hid">收到代理，但它不是BluetoothHidDevice</string>
+    <string name="tutorial_string">谢您使用此应用程序！ 要进行连接，请转到下一个屏幕并打开蓝牙（如果尚未打开）。 随后，进入其他设备的配对菜单并搜索该设备。 配对后，请享受该应用程序！</string>
+    <string name="understood">明白了！ （此消息在以后的启动中将不再重复）</string>
+    <string name="proceed">继续</string>
+    <string name="recenter_detector">集中检测器</string>
+    <string name="gyro_not_avail">您的手机似乎不支持陀螺仪输入和/或加速度计输入，或两者都不支持。 这样，请注意，某些功能（如Gyro Mouse）将不可用。</string>
+    <string name="choose_a_control_type">选择控件类型！</string>
+    <string name="trackpad">触控板</string>
+    <string name="trackpoint">指点杆</string>
+    <string name="pointer">指针</string>
+    <string name="keyboard">键盘</string>
+    <string name="bluetooth_connected">蓝牙已连接！</string>
+    <string name="connect_first">Please connect first!</string>
+    <string name="text_pipe">文字管道（只用英文）</string>
+    <string name="send_text">发字！</string>
+    <string name="auto_click">自动点击</string>
+</resources>

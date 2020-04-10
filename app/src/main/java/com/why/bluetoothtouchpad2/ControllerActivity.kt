@@ -104,10 +104,6 @@ class ControllerActivity : Activity() {
         }
     }
 
-    override fun onRestart() {
-        super.onRestart()
-    }
-
     fun rush(view: View)         {
         Main.mp?.start()
         Thread {

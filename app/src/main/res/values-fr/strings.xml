@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="auto_click">Clic automatique</string>
+    <string name="send_text">Envoyez du texte!</string>
+    <string name="text_pipe">Tuyau de texte</string>
+    <string name="connect_first">Veuillez d\'abord vous connecter!</string>
+    <string name="bluetooth_connected">Bluetooth connecté!</string>
+    <string name="keyboard">Clavier</string>
+    <string name="pointer">Aiguille</string>
+    <string name="trackpoint">Point de trace</string>
+    <string name="trackpad">Trackpad</string>
+    <string name="choose_a_control_type">Choisissez un type de contrôle!</string>
+    <string name="gyro_not_avail">Il semble que votre téléphone ne prenne pas en charge les entrées gyroscopiques, les accéléromètres ou les deux. En tant que tel, veuillez noter que certaines fonctionnalités telles que Gyro Mouse ne seront pas disponibles.</string>
+    <string name="recenter_detector">Détecteur récent</string>
+    <string name="proceed">Procéder</string>
+    <string name="understood">Compris! (Ce message ne se répétera pas lors des démarrages suivants)</string>
+    <string name="tutorial_string">Merci d\'utiliser cette application! Pour vous connecter, passez à l\'écran suivant et activez votre Bluetooth (si ce n\'est pas déjà fait). Par la suite, entrez dans le menu de couplage de votre autre appareil et recherchez cet appareil. Une fois jumelé, profitez de l\'application!</string>
+    <string name="not_ble_hid">Proxy reçu mais ce n\'est pas un BluetoothHidDevice</string>
+    <string name="app_name">Pavé tactile Bluetooth</string>
+</resources>

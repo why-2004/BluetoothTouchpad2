@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ブルートゥース　トラックパッド</string>
+    <string name="not_ble_hid">プロキシを受信しましたが、ブルートゥース隠しデバイスではありません</string>
+    <string name="tutorial_string">このアプリをご利用いただきありがとうございます！ 接続するには、次の画面に移動してブルートゥースをオンにします（まだオンになっていない場合）。 次に、他のデバイスのペアリングメニューに入り、このデバイスを検索します。 ペア設定したら、アプリをお楽しみください！</string>
+    <string name="understood">わかった！ （このメッセージは、その後の起動では繰り返されません）</string>
+    <string name="proceed">続行</string>
+    <string name="recenter_detector">最近の検出器</string>
+    <string name="gyro_not_avail">お使いのスマートフォンはジャイロスコープ入力、加速度計入力、またはその両方をサポートしていないようです。 そのため、ジャイロマウスなどの一部の機能は使用できなくなります。</string>
+    <string name="choose_a_control_type">コントロールタイプを選択してください！</string>
+    <string name="trackpad">トラックパッド</string>
+    <string name="trackpoint">トラックポイント</string>
+    <string name="pointer">ポインタ</string>
+    <string name="keyboard">キーボード</string>
+    <string name="bluetooth_connected">ブルートゥース接続済み！</string>
+    <string name="connect_first">まず接続してください！</string>
+    <string name="text_pipe">テキストパイプ</string>
+    <string name="send_text">文章を送る！</string>
+    <string name="auto_click">自動クリック</string>
+</resources>

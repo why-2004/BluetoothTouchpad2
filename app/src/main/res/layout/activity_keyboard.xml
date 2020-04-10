@@ -14,17 +14,24 @@
         android:layout_height="0dp"
         android:layout_weight="0.8"
         android:weightSum="1">
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_gravity="left"
+android:weightSum="1"
+    android:orientation="vertical">
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:background="#323232"
+        android:gravity="center"
+        android:onClick="moveLeft"
+        android:layout_weight="0.5"
+        android:text="@string/left"
+        android:textColor="#E0E0E0"
+        tools:ignore="HardcodedText,NestedWeights,RtlHardcoded" />
+</LinearLayout>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="left"
-            android:background="#323232"
-            android:gravity="center_horizontal"
-            android:onClick="moveLeft"
-            android:text="@string/left"
-            android:textColor="#E0E0E0"
-            tools:ignore="HardcodedText,NestedWeights,RtlHardcoded" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -170,17 +177,25 @@
 
         </LinearLayout>
 
-
-        <Button
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="right"
-            android:background="#323232"
-            android:gravity="center_horizontal"
-            android:onClick="moveRight"
-            android:text="@string/right"
-            android:textColor="#E0E0E0"
-            tools:ignore="HardcodedText,NestedWeights,RtlHardcoded" />
+            android:weightSum="1"
+            android:orientation="vertical">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="right"
+                android:background="#323232"
+                android:gravity="center"
+                android:layout_weight="0.5"
+                android:onClick="moveRight"
+                android:text="@string/right"
+                android:textColor="#E0E0E0"
+                tools:ignore="HardcodedText,NestedWeights,RtlHardcoded" />
+
+        </LinearLayout>
     </FrameLayout>
 
 </LinearLayout>

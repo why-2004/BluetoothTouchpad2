@@ -1,35 +1,30 @@
 <resources>
-    <string name="app_name">Bluetooth Touchpad2</string>
+    <string name="app_name">Bluetooth Touchpad</string>
     <string name="not_ble_hid">Proxy received but it is not a BluetoothHidDevice</string>
-
-    <string name="title_activity_mouse">MouseActivity</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
-    <string name="tutorial_string">Thank you for testing! There are now 4 input methods: Trackpad, TouchNub, Pointer and Keyboard. \n\nTrackpad is self-explanatory. \n\nNub acts like a joystick, just like a Thinkpad TrackPoint or New Nintendo 3DS C-Stick. \n\nPointer acts like a magic mouse, Wii Remote or Switch Joy-Con: Just point and click! (You may need to center the pointer for stability.)\n\nKeyboard works like a normal keyboard, with arrow keys! (Please note that Swiftkey Keyboard is not supported due to bugs with spacebar.)\n\n Just use the buttons on the side to navigate!\n\n\n Connections:\nYou can connect to any Android phone or Windows computer (Apple products not officially supported yet). Simply connect to your phone from the computer (Make sure both have Bluetooth on!) and wait. (The pointer might freeze for a few seconds. This is normal.)\n\n\nThank you so much for trying my app!</string>
-    <string name="android_mousepad">Android Mousepad</string>
+    <string name="title_activity_mouse" translatable="false">MouseActivity</string>
     <string name="understood">Understood! (This message will not repeat on subsequent startups)</string>
     <string name="proceed">Proceed</string>
     <string name="recenter_detector">Recenter Detector</string>
     <string name="gyro_not_avail">It seems that your phone does not support gyroscopic input, accelerometer input, or both. A such, please note that some features like Gyro Mouse will not be available.</string>
-    <string name="up">\u2191</string>
-    <string name="down">\u2193</string>
-    <string name="left">\u2190</string>
-    <string name="right">\u2192</string>
-    <string name="choose_a_control_type">Choose a control type!</string>
+    <string name="up" translatable="false">\u2191</string>
+    <string name="down" translatable="false">\u2193</string>
+    <string name="left" translatable="false">\u2190</string>
+    <string name="right" translatable="false">\u2192</string>
     <string name="trackpad">Trackpad</string>
     <string name="trackpoint">TrackPoint</string>
     <string name="pointer">Pointer</string>
     <string name="keyboard">Keyboard</string>
     <string name="bluetooth_connected">Bluetooth Connected!</string>
     <string name="connect_first">Please connect first!</string>
-    <string name="ctrl">Ctrl</string>
-    <string name="alt">Alt</string>
-    <string name="tab">Tab</string>
-    <string name="win">Win</string>
-    <string name="del">Del</string>
+    <string name="ctrl" translatable="false">Ctrl</string>
+    <string name="alt" translatable="false">Alt</string>
+    <string name="tab" translatable="false">Tab</string>
+    <string name="del" translatable="false">Del</string>
     <string name="text_pipe">Text Pipe</string>
     <string name="send_text">Send text!</string>
     <string name="auto_click">Auto-Click</string>
+    <string name="choose_a_control_type">Choose a control type!</string>
+    <string name="tutorial_string">"Thank you for using this app! To connect, go to the next screen and turn on your Bluetooth (if you haven't already). Subsequently, enter your other device's pairing menu and search for this device. Once paired, enjoy the app! "</string>
 
 
 </resources>
